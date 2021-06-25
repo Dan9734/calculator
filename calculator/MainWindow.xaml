@@ -1,0 +1,185 @@
+﻿<Window x:Class="calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:calculator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="425">
+    <Window.Resources>
+        <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="grid">
+                            <Border x:Name="border" CornerRadius="8" BorderBrush="Black" BorderThickness="2">
+                                <Border.Background>
+                                    <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                        <RadialGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform CenterX="0.5" CenterY="0.5" 
+                                                        ScaleX="1.5" ScaleY="1.5"/>
+                                                <TranslateTransform X="0.02" Y="0.3"/>
+                                            </TransformGroup>
+                                        </RadialGradientBrush.RelativeTransform>
+                                        <GradientStop Offset="1" Color="#D3D3D3"/>
+                                        <GradientStop Offset="0.8" Color="#A9A9A9"/>
+                                        <GradientStop Offset="0.6" Color="#C0C0C0"/>
+                                        <GradientStop Offset="0.4" Color="#A9A9A9"/>
+                                        <GradientStop Offset="0.3" Color="#A9A9A9"/>
+                                    </RadialGradientBrush>
+                                </Border.Background>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          TextElement.FontWeight="Bold">
+                                </ContentPresenter>
+                            </Border>
+
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
+                                                    <TranslateTransform X="0.02" Y="0.3"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#00000000" Offset="1"/>
+                                            <GradientStop Color="#778899" Offset="0.3"/>
+                                        </RadialGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#DCDCDC"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="RoundCornernum" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="grid">
+                            <Border x:Name="border" CornerRadius="8" BorderBrush="Black" BorderThickness="2">
+                                <Border.Background>
+                                    <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                        <RadialGradientBrush.RelativeTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform CenterX="0.5" CenterY="0.5" 
+                                                        ScaleX="1.5" ScaleY="1.5"/>
+                                                <TranslateTransform X="0.02" Y="0.3"/>
+                                            </TransformGroup>
+                                        </RadialGradientBrush.RelativeTransform>
+                                        <GradientStop Offset="1" Color="#C0C0C0"/>
+                                        <GradientStop Offset="0.8" Color="#A9A9A9"/>
+                                        <GradientStop Offset="0.6" Color="#C0C0C0"/>
+                                        <GradientStop Offset="0.4" Color="#C0C0C0"/>
+                                        <GradientStop Offset="0.3" Color="#C0C0C0"/>
+                                    </RadialGradientBrush>
+                                </Border.Background>
+                                <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          TextElement.FontWeight="Bold">
+                                </ContentPresenter>
+                            </Border>
+
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <RadialGradientBrush GradientOrigin="0.496,1.052">
+                                            <RadialGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="1.5" ScaleY="1.5"/>
+                                                    <TranslateTransform X="0.02" Y="0.3"/>
+                                                </TransformGroup>
+                                            </RadialGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#00000000" Offset="1"/>
+                                            <GradientStop Color="#778899" Offset="0.3"/>
+                                        </RadialGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#DCDCDC"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+
+    <Grid x:Name="LayoutRoot" Background="White">
+
+
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Image Source="C:\Users\Данила Новиков\source\repos\calculator\calculator\2342.jpg"
+        Width="425"
+        Height="550"
+        Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.RowSpan="6" Margin="-8,-31,0,0" Stretch="Fill"/>
+        <Image Source="34743423.jpg" Stretch="Fill" Margin="10,0" Grid.ColumnSpan="4"/>
+        <TextBlock x:Name="textBlock" FontWeight="Bold" TextAlignment="Right" Padding="10,0,0,10" FontSize="35" VerticalAlignment="Center" Grid.Column="0" Grid.ColumnSpan="4" Margin="25,30,27,10" Height="47"  />
+
+        <!--цифры-->
+
+        <Button Grid.Column="0" FontSize="30" Style="{DynamicResource RoundCorner}" Margin="15" Grid.Row="2">1</Button>
+        <Button Grid.Column="1" FontSize="30" Style="{DynamicResource RoundCorner}" Margin="15" Grid.Row="2">2</Button>
+        <Button Grid.Column="2" FontSize="30" Style="{DynamicResource RoundCorner}" Margin="15" Grid.Row="2">3</Button>
+        <Button Grid.Column="0" FontSize="30" Style="{DynamicResource RoundCorner}" Margin="15" Grid.Row="3">4</Button>
+        <Button Grid.Column="1" FontSize="30" Style="{DynamicResource RoundCorner}" Margin="15" Grid.Row="3">5</Button>
+        <Button Grid.Column="2" FontSize="30" Style="{DynamicResource RoundCorner}" Margin="15" Grid.Row="3">6</Button>
+        <Button Grid.Column="0" FontSize="30" Style="{DynamicResource RoundCorner}" Margin="15" Grid.Row="4">7</Button>
+        <Button Grid.Column="1" FontSize="30" Style="{DynamicResource RoundCorner}" Margin="15" Grid.Row="4">8</Button>
+        <Button Grid.Column="2" FontSize="30" Style="{DynamicResource RoundCorner}" Margin="15" Grid.Row="4">9</Button>
+
+        <!--Действия-->
+
+        <Button Grid.Column="2" FontSize="30" Style="{DynamicResource RoundCornernum}" Margin="15" Grid.Row="1">+</Button>
+        <Button Grid.Column="3" FontSize="30" Style="{DynamicResource RoundCornernum}" Margin="15" Grid.Row="1">-</Button>
+        <Button Grid.Column="3" FontSize="30" Style="{DynamicResource RoundCornernum}" Margin="15" Grid.Row="2">*</Button>
+        <Button Grid.Column="1" FontSize="30" Style="{DynamicResource RoundCornernum}" Margin="15" Grid.Row="5">0</Button>
+        <Button Grid.Column="2" FontSize="30" Style="{DynamicResource RoundCornernum}" Margin="15" Grid.Row="5">00</Button>
+        <Button Grid.Column="3" FontSize="30" Style="{DynamicResource RoundCornernum}" Margin="15" Grid.Row="3">/</Button>
+        <Button Grid.Column="3" FontSize="30" Style="{DynamicResource RoundCornernum}" Margin="15" Grid.Row="4" Grid.RowSpan="2">=</Button>
+        <Button Grid.Column="0" FontSize="30" Style="{DynamicResource RoundCornernum}" Margin="15" Grid.Row="5">C</Button>
+    </Grid>
+</Window>
